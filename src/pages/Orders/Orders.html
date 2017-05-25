@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>NUEVO PEDIDO</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="forms-examples-content">
+      <form class="sample-form event-form" [formGroup]="order_form" (ngSubmit)="createOrder()">
+        <section class="form-section">
+          <ion-item class="multi-input time-item">
+            <ion-label floating>Fecha</ion-label>
+            <ion-datetime formControlName="date" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Cantidad (# de llantas)</ion-label>
+            <ion-input type="number" formControlName="quantity"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label >Seleccione un desecho</ion-label>
+            <ion-select formControlName="waste">
+              <ion-option *ngFor="let key of lstWaste" [value]="key.WASTEONU">{{key.WASTEDESCRIPTION }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-label>
+              <ion-label>
+                <span class="radio-tags-label">TIPO DE PEDIDO</span>
+              </ion-label>
+              <ion-list class="radio-tags" radio-group formControlName="btnGroup">
+                <ion-item class="radio-tag">
+                  <ion-label>General</ion-label>
+                  <ion-radio value="General" ></ion-radio>
+                </ion-item>
+                <ion-item class="radio-tag">
+                  <ion-label>
+                    <span>Privado</span>
+                  </ion-label>
+                  <ion-radio value="Privado"></ion-radio>
+                </ion-item>
+              </ion-list>
+          </ion-label>
+           <ion-item *ngIf="order_form.get('btnGroup').value == 'Privado' ">
+            <ion-label >Importador</ion-label>
+            <ion-select formControlName="importer"> 
+              <ion-option *ngFor="let key of lstImporter" [value]="key.IIMPORTERID">{{key.IMPORTERNAME }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </section>
+        <section class="form-section">
+          <button ion-button block class="form-action-button" type="submit" [disabled]="!order_form.valid">Guardar</button>
+        </section>
+      </form>
+</ion-content>

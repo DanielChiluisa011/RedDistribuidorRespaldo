@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title >Información Distribuidor </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="forms-examples-content">
+  <form  class="auth-form" [formGroup]="Form">
+    <img id="MapImage" (click)="SetPosition()" src="https://maps.googleapis.com/maps/api/staticmap?center=-1.703447,-78.8145726&zoom=10&size=400x300&scale=2&markers=icon:https://s3-us-west-2.amazonaws.com/ionicthemes-apps-assets/ion2FullApp/pin.min.png|-1.703447,-78.8145726">
+    <ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+      <ion-label floating>Nombre del Distribuidor</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-icon name="pin" item-left></ion-icon>
+      <ion-label floating>Dirección</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name="call" item-left></ion-icon>
+      <ion-label floating>Teléfono</ion-label>
+      <ion-input type="tel" formControlName="phone"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name="globe" item-left></ion-icon>
+      <ion-label floating>Registro de generador de desechos</ion-label>
+      <ion-input type="input" formControlName="licence" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="grid" item-left></ion-icon>
+      <ion-label floating>RUC (opcional)</ion-label>  
+      <ion-input type="text" formControlName="ruc" ></ion-input>
+    </ion-item>
+    <button id="BtnForm" ion-button class="form-action-button" (click)="UpdateInformation()">Editar</button>
+  </form>
+   
+</ion-content>

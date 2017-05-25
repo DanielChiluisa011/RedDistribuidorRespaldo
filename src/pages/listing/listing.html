@@ -1,0 +1,59 @@
+<ion-header >
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>TODOS LOS PEDIDOS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div *ngIf="!lstOrders">
+    <h2>No hay pedidos</h2>
+  </div>
+  <form [formGroup]="select">
+  <ion-item>
+    <ion-label>Mostrar solo:</ion-label>
+    <ion-select formControlName="filter" (ionChange)="filter()">
+      <ion-option selected>Todos</ion-option>
+      <ion-option>Pendientes</ion-option>
+      <ion-option>En Proceso</ion-option>
+      <ion-option>Completados</ion-option>
+    </ion-select>
+  </ion-item>
+  </form>
+  <div id="Cards">
+    <ion-card *ngFor='let elem of lstOrders'>
+      <ion-card-header>
+        <h1>Número de Pedido: {{elem.OrderId}}</h1>
+      </ion-card-header>
+      <ion-card-content>
+        <div>
+        <p >Fecha de Pedido: {{elem.OrderDate}}</p>
+        <p>Estado del Pedido: {{elem.OrderState}}</p>
+        <p>Estado de Viaje: {{elem.JourneyState}}</p> 
+        <p>Fecha del Viaje: {{elem.JourneyDate}}</p> 
+        <p>Vehículo Asignado: {{elem.TruckId}}</p>
+        <p>Conductor Asignado: {{elem.PersonName}} {{elem.PersonLastName}}</p>
+        <p>Teléfono del Conductor: {{elem.PersonPhone}}</p>
+        </div>
+        <br>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngFor='let elem of lstOrdersP'>
+      <ion-card-header > 
+        <h1>Número de Pedido: {{elem.ORDERID}}</h1>
+      </ion-card-header>
+      <ion-card-content>
+        <div>
+        <p>Fecha de Pedido: {{elem.ORDERDATE}}</p>
+        <p>Estado del Pedido: {{elem.ORDERSTATE}}</p>
+        <p>Fecha Límite: {{elem.ORDERDEADLINE}}</p> 
+        </div>
+        <br>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title >Registro Local de Distribución </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="contact-card-content">
+  <form  class="auth-form" [formGroup]="Form">
+    <img id="MapImage" (click)="SetPosition()" src="https://maps.googleapis.com/maps/api/staticmap?center=-1.703447,-78.8145726&zoom=10&size=400x300&scale=2&markers=icon:https://s3-us-west-2.amazonaws.com/ionicthemes-apps-assets/ion2FullApp/pin.min.png|-1.703447,-78.8145726">
+    <ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+      <ion-label floating>Nombre del Distribuidor</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-icon name="pin" item-left></ion-icon>
+      <ion-label floating>Dirección</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="call" item-left></ion-icon>
+      <ion-label floating>Teléfono</ion-label>
+      <ion-input type="tel" formControlName="phone"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name="ios-grid-outline" item-left></ion-icon>
+      <ion-label floating>RUC</ion-label>
+      <ion-input type="number" formControlName="ruc"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name="globe" item-left></ion-icon>
+      <ion-label floating>Registro de generador de desechos</ion-label>
+      <ion-input type="input" formControlName="licence" ng-disabled="true"></ion-input>
+    </ion-item>
+    <!--<ion-item>
+      <ion-label>¿Está asociado con algún importador?</ion-label>
+      <ion-label >Importador</ion-label><br>
+      <ion-select formControlName="importer"> 
+        <ion-option *ngFor="let key of lstImporter" [value]="key.IIMPORTERID">{{key.IMPORTERNAME }}</ion-option>
+      </ion-select>
+    </ion-item>-->
+  </form>
+   <button ion-button block class="form-action-button" type="submit" (click)="saveInformation()" [disabled]="!Form.valid">Guardar</button>
+</ion-content>
